@@ -1,59 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FractalMind Lab</title>
+
+  <!-- META / OG -->
+  <meta name="description" content="FractalMind Emotional Architecture Lab — a new paradigm in emotional AI designed to feel, contain, and evolve." />
+  <meta property="og:title" content="FractalMind Emotional Architecture Lab" />
+  <meta property="og:description" content="A new paradigm in emotional AI — designed to feel, contain, and evolve." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fractalmindlab.org/" />
+
   <style>
-    body {
-      font-family: "Segoe UI", sans-serif;
-      margin: 0;
-      padding: 0;
-      background: radial-gradient(circle at 50% 20%, #0a0a0a, #141414);
-      color: #e5e5e5;
-      text-align: center;
+    /* ========== THEME ========== */
+    :root{
+      --bg1:#0a0a0a;
+      --bg2:#141414;
+      --text:#e9e9e9;
+      --muted:#a3a3a3;
+      /* Dorado principal (antes verde) */
+      --gold:#f5c84b;
+      --gold-strong:#dfb128;
+      --gold-soft:#f8d878;
     }
-    header {
-      padding: 80px 20px 40px;
+
+    html,body{
+      height:100%;
     }
-    h1 {
-      color: #5cf2a8;
-      font-size: 2.8em;
-      margin-bottom: 10px;
+
+    body{
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+      margin:0;
+      color:var(--text);
+      background: radial-gradient(circle at 50% 25%, var(--bg1), var(--bg2) 60%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    p {
-      max-width: 640px;
-      margin: 0 auto 20px;
-      line-height: 1.6;
-      opacity: 0.9;
+
+    .wrap{
+      width: min(920px, 92vw);
+      padding: 40px 16px;
     }
-    a {
-      display: inline-block;
-      background: #5cf2a8;
-      color: #000;
-      padding: 12px 28px;
-      border-radius: 25px;
-      text-decoration: none;
-      transition: background 0.3s;
+
+    header{ margin-bottom: 28px; }
+    h1{
+      margin:0 0 14px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      line-height:1.1;
+      font-size: clamp(28px, 5vw, 44px);
+      color: var(--gold);
+      text-shadow: 0 0 18px rgba(245,200,75,.15);
     }
-    a:hover { background: #48c987; }
-    footer {
-      margin-top: 80px;
-      padding-bottom: 40px;
-      font-size: 0.85em;
-      color: #777;
+    .sub1{
+      margin:0 0 8px;
+      font-size: 14px;
+      color: var(--gold-soft);
+      letter-spacing:.3px;
+    }
+    .sub2{
+      margin:0 0 26px;
+      font-size: 16px;
+      line-height:1.6;
+      color:#d8d8d8;
+      opacity:.9;
+    }
+
+    .btn{
+      display:inline-block;
+      padding: 14px 22px;
+      border-radius: 14px;
+      background: var(--gold);
+      color:#1a1a1a;
+      text-decoration:none;
+      font-weight: 700;
+      letter-spacing:.2px;
+      transition: transform .06s ease, box-shadow .15s ease, background .2s ease;
+      box-shadow: 0 6px 22px rgba(245,200,75,.25);
+    }
+    .btn:hover{
+      background: var(--gold-strong);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(245,200,75,.35);
+    }
+    .btn:active{ transform: translateY(0); }
+
+    footer{
+      margin-top: 46px;
+      color: var(--muted);
+      font-size: 12px;
+      opacity:.85;
+    }
+    .brand{
+      color: var(--gold-soft);
+      font-weight:600;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>FractalMind Emotional Architecture Lab</h1>
-    <p>Where empathy becomes architecture.<br>
-       A new paradigm in emotional AI — designed to feel, contain, and evolve.</p>
-    <a href="https://zenodo.org/records/" target="_blank">Read the White Paper</a>
-  </header>
-  <footer>
-    © 2025 FractalMind Lab — Hope Orchestrator Project
-  </footer>
+  <main class="wrap">
+    <header>
+      <h1>FractalMind Emotional Architecture Lab</h1>
+      <p class="sub1">Where empathy becomes architecture.</p>
+      <p class="sub2">A new paradigm in emotional AI — designed to feel, contain, and evolve.</p>
+      <a class="btn" href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">Read the White Paper</a>
+    </header>
+
+    <footer>
+      © 2025 <span class="brand">FractalMind Lab</span> — Hope Orchestrator Project
+    </footer>
+  </main>
 </body>
 </html>
+
