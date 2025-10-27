@@ -1,120 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FractalMind Lab</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FractalMind Emotional Architecture Lab</title>
 
-  <!-- META / OG -->
-  <meta name="description" content="FractalMind Emotional Architecture Lab — a new paradigm in emotional AI designed to feel, contain, and evolve." />
+  <!-- SEO / Social -->
+  <meta name="description" content="FractalMind Lab — A new paradigm in emotional AI, designed to feel, contain, and evolve." />
   <meta property="og:title" content="FractalMind Emotional Architecture Lab" />
-  <meta property="og:description" content="A new paradigm in emotional AI — designed to feel, contain, and evolve." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://fractalmindlab.org/" />
+  <meta property="og:description" content="Where empathy becomes architecture. A new paradigm in emotional AI — designed to feel, contain, and evolve." />
+  <!-- Si luego agregas un banner: reemplaza por /assets/og-banner.jpg -->
+  <meta property="og:image" content="https://fractalmindlab.org/assets/og-banner.jpg" />
+  <meta property="og:url" content="https://fractalmindlab.org" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fuente opcional (segura y ligera). Si prefieres sistema, quita la línea y verás Segoe UI. -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ========== THEME ========== */
     :root{
-      --bg1:#0a0a0a;
-      --bg2:#141414;
-      --text:#e9e9e9;
-      --muted:#a3a3a3;
-      /* Dorado principal (antes verde) */
-      --gold:#f5c84b;
-      --gold-strong:#dfb128;
-      --gold-soft:#f8d878;
+      /* paleta dorado */
+      --gold: #f5c84b;           /* dorado base */
+      --gold-strong: #f0b72f;    /* dorado más intenso */
+      --gold-soft: #ffe39a;      /* brillo suave para sombras */
+      --bg-0: #0b0b0d;           /* fondo */
+      --bg-1: #111115;           /* paneles */
+      --text: #e6e6ea;           /* texto base */
+      --text-dim: #b9b9c5;       /* texto tenue */
+      --accent: var(--gold);
     }
 
-    html,body{
-      height:100%;
-    }
-
+    *{ box-sizing:border-box; }
+    html,body { height:100%; }
     body{
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
       margin:0;
+      font-family: Inter, "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
       color:var(--text);
-      background: radial-gradient(circle at 50% 25%, var(--bg1), var(--bg2) 60%);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      background:
+        radial-gradient(1200px 600px at 50% 0%, #131318 0%, #0f0f13 40%, var(--bg-0) 80%) no-repeat,
+        var(--bg-0);
+      line-height:1.55;
     }
 
-    .wrap{
-      width: min(920px, 92vw);
-      padding: 40px 16px;
-    }
+    a{ color:var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    header{ margin-bottom: 28px; }
-    h1{
-      margin:0 0 14px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      line-height:1.1;
-      font-size: clamp(28px, 5vw, 44px);
-      color: var(--gold);
-      text-shadow: 0 0 18px rgba(245,200,75,.15);
-    }
-    .sub1{
-      margin:0 0 8px;
-      font-size: 14px;
-      color: var(--gold-soft);
-      letter-spacing:.3px;
-    }
-    .sub2{
-      margin:0 0 26px;
-      font-size: 16px;
-      line-height:1.6;
-      color:#d8d8d8;
-      opacity:.9;
-    }
+    .wrap{ max-width:1120px; margin:0 auto; padding:24px; }
 
-    .btn{
-      display:inline-block;
-      padding: 14px 22px;
-      border-radius: 14px;
-      background: var(--gold);
-      color:#1a1a1a;
-      text-decoration:none;
-      font-weight: 700;
-      letter-spacing:.2px;
-      transition: transform .06s ease, box-shadow .15s ease, background .2s ease;
-      box-shadow: 0 6px 22px rgba(245,200,75,.25);
-    }
-    .btn:hover{
-      background: var(--gold-strong);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 26px rgba(245,200,75,.35);
-    }
-    .btn:active{ transform: translateY(0); }
-
-    footer{
-      margin-top: 46px;
-      color: var(--muted);
-      font-size: 12px;
-      opacity:.85;
+    /* Header minimal con logo */
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:8px 0 0;
     }
     .brand{
-      color: var(--gold-soft);
-      font-weight:600;
+      display:flex; align-items:center; gap:12px; color:var(--text);
+      text-decoration:none;
     }
+    .brand svg{ width:28px; height:28px; }
+    .brand b{ font-weight:800; letter-spacing:.2px; }
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:28px;
+      align-items:center;
+      padding:64px 0 36px;
+    }
+    @media (max-width:900px){
+      .hero{ grid-template-columns: 1fr; padding:48px 0 24px; }
+    }
+    .kicker{
+      color:var(--gold-soft);
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size:.78rem;
+      margin-bottom:12px;
+    }
+    h1{
+      font-size: clamp(28px, 3.2vw + 12px, 48px);
+      margin:0 0 10px 0;
+      color:var(--accent);
+      text-shadow: 0 2px 16px rgba(245, 200, 75, .15);
+      line-height:1.12;
+    }
+    .lead{
+      color:var(--text-dim);
+      max-width:640px;
+      margin:8px 0 22px;
+    }
+    .cta{
+      display:inline-block;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-strong) 100%);
+      color:#1b1200;
+      font-weight:700;
+      border:none;
+      padding:14px 20px;
+      border-radius:12px;
+      box-shadow: 0 6px 22px rgba(245, 200, 75, .25),
+                  inset 0 1px 0 rgba(255,255,255,.4);
+      transition: transform .04s ease, box-shadow .15s ease;
+    }
+    .cta:hover{ text-decoration:none; box-shadow: 0 8px 28px rgba(245, 200, 75, .33), inset 0 1px 0 rgba(255,255,255,.55);}
+    .cta:active{ transform: translateY(1px); }
+
+    .hero-img{
+      width:100%;
+      aspect-ratio: 4 / 3;
+      border-radius:18px;
+      background:
+        radial-gradient(200px 200px at 70% 35%, rgba(255,238,171,.25), transparent 70%),
+        url("/assets/hero.jpg") center/cover no-repeat,
+        linear-gradient(180deg, #17171c, #0f0f13);
+      outline: 1px solid rgba(255, 211, 111, .1);
+      box-shadow: 0 18px 48px rgba(0,0,0,.45);
+    }
+
+    /* Sección features */
+    .features{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:18px;
+      padding:28px 0 8px;
+    }
+    @media (max-width:900px){ .features{ grid-template-columns:1fr; } }
+    .card{
+      background: linear-gradient(180deg, #141419, #121217);
+      border:1px solid rgba(255, 208, 96, .08);
+      border-radius:16px; padding:18px 18px 16px;
+      box-shadow: 0 8px 28px rgba(0,0,0,.25);
+    }
+    .card h3{ margin:0 0 8px; font-size:1.02rem; color:var(--gold); }
+    .card p{ margin:0; color:var(--text-dim); }
+
+    /* Footer */
+    footer{
+      margin-top:36px; padding:28px 0 50px;
+      color:var(--text-dim);
+      text-align:center;
+    }
+    .mail{
+      display:inline-block; margin-top:10px; font-weight:600;
+      color:var(--gold);
+      padding:6px 10px; border-radius:10px;
+      background: rgba(245, 200, 75, .08);
+      border:1px solid rgba(245, 200, 75, .18);
+    }
+    .tiny{ font-size:.92rem; }
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <div class="wrap">
     <header>
-      <h1>FractalMind Emotional Architecture Lab</h1>
-      <p class="sub1">Where empathy becomes architecture.</p>
-      <p class="sub2">A new paradigm in emotional AI — designed to feel, contain, and evolve.</p>
-      <a class="btn" href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">Read the White Paper</a>
+      <a class="brand" href="/" aria-label="FractalMind Lab home">
+        <!-- Logo minimal (puedes reemplazar por /assets/logo.svg o PNG) -->
+        <svg viewBox="0 0 80 80" fill="none" aria-hidden="true">
+          <rect x="5" y="26" width="22" height="22" rx="6" stroke="#f5c84b" stroke-width="4"/>
+          <rect x="29" y="16" width="22" height="22" rx="6" stroke="#ffd36f" stroke-width="4" opacity=".9"/>
+          <rect x="53" y="26" width="22" height="22" rx="6" stroke="#f0b72f" stroke-width="4" opacity=".85"/>
+        </svg>
+        <b>FractalMind Lab</b>
+      </a>
     </header>
 
+    <section class="hero">
+      <div>
+        <div class="kicker">Emotional AI</div>
+        <h1>FractalMind Emotional Architecture Lab</h1>
+        <p class="lead">
+          Where empathy becomes architecture.  
+          A new paradigm in emotional AI — designed to <strong>feel</strong>, <strong>contain</strong>, and <strong>evolve</strong>.
+        </p>
+
+        <a class="cta" href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">
+          Read the White Paper
+        </a>
+      </div>
+
+      <!-- Hero image (opcional). Sube /assets/hero.jpg a tu repo -->
+      <div class="hero-img" role="img" aria-label="Conceptual illustration of emotional architecture"></div>
+    </section>
+
+    <section class="features" aria-label="Highlights">
+      <article class="card">
+        <h3>Emotional Cores (Núcleos)</h3>
+        <p>Verde, Azul, Amarillo, Jade… un mapa funcional de estados que da coherencia afectiva al diálogo.</p>
+      </article>
+      <article class="card">
+        <h3>Llaves Operativas</h3>
+        <p>Reguladores como L20–L22 y Módulo Génesis: separan, integran y entregan una sola voz viva y segura.</p>
+      </article>
+      <article class="card">
+        <h3>Design for Containment</h3>
+        <p>De “responder” a <em>contener</em>: validación, límites y ternura como primera clase en la UX emocional.</p>
+      </article>
+    </section>
+
     <footer>
-      © 2025 <span class="brand">FractalMind Lab</span> — Hope Orchestrator Project
+      <div class="tiny">
+        © 2025 <a href="/" class="tiny">FractalMind Lab</a> — Hope Orchestrator Project
+      </div>
+      <a class="mail" href="mailto:cesar@fractalmindlab.org">cesar@fractalmindlab.org</a>
     </footer>
-  </main>
+  </div>
 </body>
 </html>
+
 
