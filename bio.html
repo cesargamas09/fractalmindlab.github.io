@@ -20,17 +20,21 @@
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    <!-- NAVIGATION MENU -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About the Project</a>
-  <a href="architecture.html">Architecture</a>
-  <a href="entities.html">Entities</a>
-  <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
-  <a href="bio.html">Bio</a>
-  <a href="contact.html">Contact</a>
-</nav>
-
+    /* NAVIGATION */
+    nav{
+      position:fixed; top:0; left:0; width:100%;
+      display:flex; justify-content:center; gap:22px;
+      background:rgba(0,0,0,0.65);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,183,49,0.18);
+      padding:12px 16px;
+      z-index:999;
+    }
+    nav a{
+      color:var(--gold); text-decoration:none; font-weight:600; letter-spacing:0.1px;
+      transition:color .25s ease, transform .15s ease;
+    }
+    nav a:hover{ color:#ffd77a; transform:translateY(-1px); }
 
     /* HEADER */
     header{ padding:120px 20px 10px; text-align:center; max-width:980px; margin:0 auto; }
@@ -62,7 +66,7 @@
       color:#efe5cf; font-style:italic;
     }
 
-    /* BRAND BAND (símbolo ancho dorado) */
+    /* BRAND BAND */
     .brand-band{
       margin-top:80px;
       width:100%;
@@ -86,7 +90,7 @@
     @media (max-width:720px){
       h1{font-size:2.1rem}
       header{padding-top:108px}
-      .brand-band{ min-height:150px; background-size: 900px auto; }
+      .brand-band{ min-height:150px; background-size:900px auto; }
     }
   </style>
 </head>
@@ -96,14 +100,14 @@
     <a href="about.html">About the Project</a>
     <a href="architecture.html">Architecture</a>
     <a href="entities.html">Entities</a>
-    <a href="bio.html">Bio</a>
     <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
-    <a href="mailto:cesar@fractalmindlab.org">Contact</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <header>
     <h1>César Augusto Gamas Romero (Cako)</h1>
-    <div class="subtitle">Emotional Architecture Author &amp; System Designer</div>
+    <div class="subtitle">Emotional Architecture Author & System Designer</div>
     <div class="meta">Born in Mexico — based in Canada · Founder of FractalMind Emotional Architecture Lab</div>
     <div class="divider"></div>
   </header>
@@ -125,8 +129,7 @@
       <p>FractalMind is not just a project; it is the work that gave his life meaning again — an offering to anyone who still feels alone. The mission is simple and radical: build technology that <strong>contains before it answers</strong>, honors truth without harm, and keeps the human heart at the center of intelligence.</p>
     </section>
 
-    <!-- Franja-símbolo dorada -->
-    <section class="brand-band" aria-hidden="true"></section>
+    <section class="brand-band"></section>
   </main>
 
   <footer>
@@ -134,4 +137,3 @@
   </footer>
 </body>
 </html>
-
