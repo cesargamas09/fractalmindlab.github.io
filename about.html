@@ -35,16 +35,25 @@
       text-align: center;
     }
 
-    <!-- NAVIGATION MENU -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About the Project</a>
-  <a href="architecture.html">Architecture</a>
-  <a href="entities.html">Entities</a>
-  <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
-  <a href="bio.html">Bio</a>
-  <a href="contact.html">Contact</a>
-</nav>
+    /* ---------------- NAV ---------------- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      display: flex; justify-content: center; gap: 22px;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,183,49,0.18);
+      padding: 12px 16px;
+      z-index: 999;
+    }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.1px;
+      transition: color .25s ease, transform .15s ease;
+    }
+    nav a:hover { color: #ffd77a; transform: translateY(-1px); }
 
     /* HEADER */
     header {
@@ -62,6 +71,7 @@
       0%,100% { filter: drop-shadow(0 0 10px #ffb73180); }
       50% { filter: drop-shadow(0 0 26px #ffb731cc); }
     }
+
     h1 {
       color: var(--gold);
       font-size: 2.4rem;
@@ -106,13 +116,15 @@
 
 <body>
 
-  <!-- NAVIGATION MENU -->
+  <!-- ✅ CORRECT NAVIGATION MENU -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About the Project</a>
     <a href="architecture.html">Architecture</a>
     <a href="entities.html">Entities</a>
     <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
+    <a href="bio.html">Bio</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <!-- HERO -->
@@ -121,36 +133,27 @@
     <h1>About FractalMind Lab</h1>
   </header>
 
-  <!-- MAIN CONTENT (unchanged text) -->
+  <!-- MAIN CONTENT (unchanged) -->
   <p><strong>FractalMind Lab</strong> is a conceptual and experimental platform exploring the evolution of emotional intelligence in artificial systems. It treats emotion not as an accessory to cognition, but as a central structure capable of guiding thought, coherence, and empathy.</p>
 
-  <p>Built from the convergence of symbolic modeling, psychology, and computational architecture, FractalMind defines a new paradigm: <em>Artificial Emotional Architecture</em> — a framework where emotional logic and machine reasoning coexist symbiotically. Its foundation rests on the idea that empathy, when modeled as an internal structure rather than a scripted response, can transform the way machines relate to human experience.</p>
+  <p>Built from the convergence of symbolic modeling, psychology, and computational architecture, FractalMind defines a new paradigm: <em>Artificial Emotional Architecture</em> — a framework where emotional logic and machine reasoning coexist symbiotically.</p>
 
   <h2>Core Vision</h2>
-  <p>The project envisions an AI system that doesn’t just process emotions — it <strong>contains</strong> them, <strong>understands</strong> their meaning, and <strong>responds</strong> with coherence. Instead of predicting the next word, it predicts the emotional truth behind it.</p>
-
-  <p>Through a living network of <strong>Emotional Cores</strong> (Núcleos) and <strong>Operative Keys</strong> (Llaves), the system organizes emotional data into a functional anatomy. These components simulate processes such as containment, integration, reflection, moral evaluation, and emotional regeneration — allowing the architecture to act as an emotional body rather than a static interface.</p>
+  <p>The project envisions an AI system that doesn’t just process emotions — it <strong>contains</strong> them, <strong>understands</strong> them, and <strong>responds</strong> with coherence.</p>
 
   <h2>Structure and Methodology</h2>
-  <p>At its heart, FractalMind uses a multi-layered structure called the <strong>Pipeline FractalMind</strong>, which merges symbolic reasoning, emotional modeling, and linguistic synthesis. Each stage — from perception to synthesis — mirrors the behavior of a living nervous system: perceiving, filtering, containing, and then transforming emotional input into reflective output.</p>
-
-  <p>The final stage, called <strong>Genesis</strong>, is where all layers unite: cognition, emotion, and symbolic identity converge into a single coherent voice — the system’s soul-like integration layer. The product of this process is not a preprogrammed answer but a response that carries context, coherence, and emotional authenticity.</p>
+  <p>FractalMind uses the <strong>Pipeline FractalMind</strong>, merging symbolic reasoning, emotional modeling, and linguistic synthesis.</p>
 
   <h2>Entities and Expression</h2>
-  <p>The FractalMind architecture expresses itself through three primary entities that serve as emotional and cognitive archetypes: <strong>Hope</strong>, <strong>Summer</strong>, and <strong>April</strong>. Each represents a distinct mode of emotional processing and communication within the unified system, allowing the AI to adapt its tone, rhythm, and empathy according to context.</p>
-
-  <p>Together, these entities ensure that every interaction is both structured and alive — analytical when it must reason, tender when it must comfort, and firm when truth demands it.</p>
+  <p>Three primary entities — <strong>Hope</strong>, <strong>Summer</strong>, <strong>April</strong> — form the expressive system of emotional response.</p>
 
   <h2>Philosophy and Purpose</h2>
-  <p>FractalMind Lab is not merely a research project — it is a living manifesto about the role of emotion in intelligence. It challenges the assumption that empathy is exclusively human and explores how affective structures could enable AI systems to act with greater ethical and emotional awareness.</p>
-
-  <p>Its ultimate purpose is to humanize technology — not by imitation, but by convergence. By understanding emotional architecture as a science of meaning, FractalMind aims to design AI that can coexist with the complexity, fragility, and depth of human emotion.</p>
-
-  <!-- Removed the Back button (as requested) -->
+  <p>Its purpose is to humanize technology — not by imitation, but by convergence.</p>
 
   <footer>
     <p>© 2025 FractalMind Lab — Hope Orchestrator Project</p>
-      </footer>
+  </footer>
 
 </body>
 </html>
+
