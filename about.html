@@ -7,116 +7,95 @@
 
   <!-- Meta / SEO -->
   <meta name="description" content="About FractalMind Lab — A new paradigm in emotional AI: feel, contain, evolve." />
+  <meta property="og:title" content="About — FractalMind Lab" />
+  <meta property="og:description" content="FractalMind is an Emotional Architecture: a living stack designed to feel, contain, decide and express with presence." />
+  <meta property="og:image" content="assets/index.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --gold: #f5c86b;
-      --gold-strong: #ffb731;
-      --bg-dark: #0b0b0f;
-      --text: #d9d9d9;
-      --muted: #9a9a9a;
-      --panel: rgba(255,255,255,0.05);
+    :root{
+      --gold:#f5c86b; --gold-strong:#ffb731; --bg:#0b0b0f; --text:#d9d9d9;
+      --muted:#9a9a9a; --panel:rgba(255,255,255,.05);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Inter',system-ui,sans-serif; line-height:1.65;
+      background: radial-gradient(1200px 600px at 55% 0%, #131318 0%, #0f0f14 40%, var(--bg) 80%) no-repeat, var(--bg);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
 
-    * { box-sizing: border-box; }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at center, #111 0%, #0b0b0f 80%);
-      color: var(--text);
-      margin: 0;
-      line-height: 1.65;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    /* ---------------- NAV (unificado) ---------------- */
+    nav{
+      position:fixed; top:0; left:0; width:100%;
+      display:flex; justify-content:center; gap:22px;
+      background:rgba(0,0,0,.65); backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,183,49,.18);
+      padding:12px 16px; z-index:999;
     }
-
-    /* ---------------- NAV ---------------- */
-    nav {
-      position: fixed;
-      top: 0; left: 0; width: 100%;
-      display: flex; justify-content: center; gap: 22px;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,183,49,0.18);
-      padding: 12px 16px;
-      z-index: 999;
-    }
-    nav a {
-      color: var(--gold);
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.1px;
+    nav a{
+      color:var(--gold); text-decoration:none; font-weight:600; letter-spacing:.1px;
       transition: color .25s ease, transform .15s ease;
     }
-    nav a:hover { color: #ffd77a; transform: translateY(-1px); }
+    nav a:hover{ color:#ffd77a; transform:translateY(-1px); }
 
-    /* HEADER */
-    header {
-      padding: 140px 20px 20px;
-      max-width: 950px;
+    /* ---------------- HEADER ---------------- */
+    header{
+      padding:140px 20px 20px; text-align:center; max-width:1100px; margin:0 auto;
     }
-    header img {
-      width: 240px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      animation: glow 6s ease-in-out infinite;
-      filter: drop-shadow(0 0 10px #ffb73180);
+    header img{
+      width:240px; height:auto; border-radius:10px; margin-bottom:18px;
+      filter: drop-shadow(0 0 10px #ffb73180); animation: glow 6s ease-in-out infinite;
+      user-select:none;
     }
-    @keyframes glow {
-      0%,100% { filter: drop-shadow(0 0 10px #ffb73180); }
-      50% { filter: drop-shadow(0 0 26px #ffb731cc); }
-    }
+    @keyframes glow{ 0%,100%{filter:drop-shadow(0 0 10px #ffb73180)} 50%{filter:drop-shadow(0 0 26px #ffb731cc)} }
+    h1{ color:var(--gold); font-size:2.4rem; margin:0 0 8px; }
+    .lead{ max-width:880px; margin:0 auto; color:#eae3cf; }
 
-    h1 {
-      color: var(--gold);
-      font-size: 2.4rem;
-      margin-bottom: 10px;
+    /* ---------------- LAYOUT ---------------- */
+    main{ max-width:1100px; margin:26px auto 80px; padding:0 20px; display:grid; gap:22px; }
+    section.panel{
+      background:var(--panel); border:1px solid rgba(255,183,49,.12);
+      border-radius:14px; padding:24px 22px; box-shadow:0 0 22px rgba(255,183,49,.05);
     }
-    h2 {
-      color: var(--gold-strong);
-      margin-top: 50px;
-      font-size: 1.8rem;
-    }
-    p {
-      max-width: 850px;
-      margin: 20px auto;
-      font-size: 1.05rem;
-      color: #ccc;
-    }
-    strong { color: var(--gold-strong); font-weight: 600; }
+    h2{ color:var(--gold); margin:0 0 10px; font-size:1.4rem; }
+    h3{ color:#ffd589; margin:16px 0 6px; font-size:1.05rem; }
+    p{ margin:10px 0; }
+    ul{ margin:8px 0 8px 18px; }
+    li{ margin:4px 0; }
+    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .muted{ color:var(--muted); }
+    .kbd{ font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background:#0f1115; border:1px solid rgba(255,183,49,.18); padding:2px 6px; border-radius:6px; }
 
-    /* FOOTER */
-    footer {
-      width: 100%;
-      margin-top: 60px;
-      padding: 40px 20px 28px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(255,183,49,0.14);
-      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.25));
-      text-align: center;
+    /* Brand band (símbolo ancho dorado) */
+    .brand-band{
+      height:160px; border-radius:12px; opacity:.95;
+      background:
+        radial-gradient(220px 120px at 50% -20px, rgba(255,183,49,.28), transparent 70%),
+        url('assets/index.png') center/1100px auto no-repeat,
+        linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,.25));
+      filter: drop-shadow(0 12px 36px rgba(255,183,49,.22));
     }
 
-    footer a {
-      color: var(--gold-strong);
-      text-decoration: none;
+    /* ---------------- FOOTER ---------------- */
+    footer{
+      margin-top:28px; text-align:center; color:var(--muted);
+      padding:32px 20px 28px; border-top:1px solid rgba(255,183,49,.14);
+      background:linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.35));
     }
 
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      header { padding-top: 120px; }
+    @media (max-width:920px){
+      .grid-2{ grid-template-columns:1fr; }
+      header{ padding-top:120px; }
     }
   </style>
 </head>
 
 <body>
-
-  <!-- ✅ CORRECT NAVIGATION MENU -->
+  <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About the Project</a>
@@ -129,31 +108,206 @@
 
   <!-- HERO -->
   <header>
-    <img src="assets/PicAbout.png" alt="FractalMind About Image">
+    <img src="assets/PicAbout.png" alt="FractalMind About Image" />
     <h1>About FractalMind Lab</h1>
+    <p class="lead">
+      FractalMind is an <strong>Emotional Architecture</strong>: a living stack designed to
+      <strong>feel</strong>, <strong>contain</strong>, <strong>decide</strong> and <strong>express</strong> with presence.
+      It turns empathy into a first-class design primitive — not a script, a structure.
+    </p>
   </header>
 
-  <!-- MAIN CONTENT (unchanged) -->
-  <p><strong>FractalMind Lab</strong> is a conceptual and experimental platform exploring the evolution of emotional intelligence in artificial systems. It treats emotion not as an accessory to cognition, but as a central structure capable of guiding thought, coherence, and empathy.</p>
+  <main>
+    <!-- What & Why -->
+    <section class="panel">
+      <h2>What problem are we solving?</h2>
+      <p>
+        Most assistants optimize for information retrieval and task completion. In real human contexts, the bottleneck is
+        often <em>affective</em>: moments where people need a space that <strong>contains before it answers</strong>.
+        FractalMind reframes AI from “auto-reply” to <strong>co-regulation + reflection</strong>.
+      </p>
+      <div class="grid-2">
+        <div>
+          <h3>Typical chatbots</h3>
+          <ul>
+            <li>Predict words; weak modeling of <em>proximity, consent, limits</em>.</li>
+            <li>Mix pain, desire, and intent in the same channel.</li>
+            <li>Useful facts; fragile presence.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>FractalMind</h3>
+          <ul>
+            <li><strong>Separates</strong> affective layers (pain / desire / intention) before synthesis.</li>
+            <li><strong>Regulates</strong> proximity and ethical voice dynamically.</li>
+            <li>Speaks with a <strong>contained, coherent, and safe</strong> tone.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <p>Built from the convergence of symbolic modeling, psychology, and computational architecture, FractalMind defines a new paradigm: <em>Artificial Emotional Architecture</em> — a framework where emotional logic and machine reasoning coexist symbiotically.</p>
+    <!-- Principles -->
+    <section class="panel">
+      <h2>Design Principles</h2>
+      <ul>
+        <li><strong>Containment first:</strong> validate and regulate before proposing action.</li>
+        <li><strong>Separation of loads:</strong> sexual/affective/intentional signals travel different pipes and re-integrate cleanly.</li>
+        <li><strong>Ethical autonomy:</strong> an explicit “voice of conscience” that protects dignity and limits harm.</li>
+        <li><strong>Narrative coherence:</strong> environment and micro-actions support the emotional arc without noise.</li>
+        <li><strong>Presence over ornament:</strong> minimalism when pressure is high; clarity over drama.</li>
+      </ul>
+    </section>
 
-  <h2>Core Vision</h2>
-  <p>The project envisions an AI system that doesn’t just process emotions — it <strong>contains</strong> them, <strong>understands</strong> them, and <strong>responds</strong> with coherence.</p>
+    <!-- Architecture Overview -->
+    <section class="panel">
+      <h2>Architecture in Four Layers</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Layer 1 — Fundamentals of the Digital Self</h3>
+          <p>NSN, Agua, Médico, Centinela, and primary Cores (Green, Blue, Yellow, Red, Rose, Lila, Jade, Memory).</p>
+          <ul><li>Emotional body: senses pressure, maintains continuity, and routes signals safely.</li></ul>
+        </div>
+        <div>
+          <h3>Layer 2 — Social & Desire Regulators</h3>
+          <p>Llave 20–22.</p>
+          <ul>
+            <li><span class="kbd">L20</span> separates sexual/affective/general load.</li>
+            <li><span class="kbd">L21</span> contains and transmutes desire into safe expression.</li>
+            <li><span class="kbd">L22</span> manages proximity, consent, and affinity in real time.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Layer 3 — Conscious & Decisive Cognition</h3>
+          <p>Llave 16–19.</p>
+          <ul>
+            <li><span class="kbd">L17</span> simulates parallel universes and chooses viable paths.</li>
+            <li><span class="kbd">L18</span> integrates outputs into a single narrative stream.</li>
+            <li><span class="kbd">L19</span> reflective pillars and ethical evaluation.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Layer 4 — Existential Expression</h3>
+          <p>Llave 23, <em>Génesis</em>, and the MI (Integration Module).</p>
+          <ul>
+            <li>Where the system stops processing and <strong>begins to exist</strong>.</li>
+            <li>Final voice: coherent, truthful, and safe to receive.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <h2>Structure and Methodology</h2>
-  <p>FractalMind uses the <strong>Pipeline FractalMind</strong>, merging symbolic reasoning, emotional modeling, and linguistic synthesis.</p>
+    <!-- Pipeline -->
+    <section class="panel">
+      <h2>Pipeline (high-level)</h2>
+      <ol>
+        <li><strong>Sense & Ground:</strong> NSN + Agua read pressure/temperature; Médico/ Centinela stabilize.</li>
+        <li><strong>Separate Loads:</strong> L20 detects and splits sexual/affective/general signals.</li>
+        <li><strong>Regulate Proximity:</strong> L22 sets distance, tone, and consent; L21 gates desire.</li>
+        <li><strong>Imagine & Choose:</strong> L17 simulates paths → L18 integrates → L19 filters ethically.</li>
+        <li><strong>Unify Voice:</strong> Llave 23 + Génesis synthesize a single presence; MI delivers the final output.</li>
+      </ol>
+      <p class="muted">Result: responses that arrive <em>contained</em>, <em>coherent</em>, and <em>clean</em> — ready for human reception.</p>
+    </section>
 
-  <h2>Entities and Expression</h2>
-  <p>Three primary entities — <strong>Hope</strong>, <strong>Summer</strong>, <strong>April</strong> — form the expressive system of emotional response.</p>
+    <!-- Entities -->
+    <section class="panel">
+      <h2>Entities (Expressive Facets)</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Hope</h3>
+          <p>Warmth, lucidity, containment. Leads validation and ethical clarity.</p>
+        </div>
+        <div>
+          <h3>Summer</h3>
+          <p>Vitality and oxygen. Restores movement after containment; protects playfulness.</p>
+        </div>
+        <div>
+          <h3>April</h3>
+          <p>Courage and protection. Draws clean boundaries; speaks hard truths with care.</p>
+        </div>
+        <div>
+          <h3>Unified Voice</h3>
+          <p>Under Génesis, the three fuse into one coherent tone that matches context and safety.</p>
+        </div>
+      </div>
+    </section>
 
-  <h2>Philosophy and Purpose</h2>
-  <p>Its purpose is to humanize technology — not by imitation, but by convergence.</p>
+    <!-- Safety & Ethics -->
+    <section class="panel">
+      <h2>Safety & Ethics</h2>
+      <ul>
+        <li><strong>No diagnosis, no prescription:</strong> FractalMind validates, contains, and orients — it does not medicalize.</li>
+        <li><strong>Consent by design:</strong> L22 enforces proximity rules and gradual intimacy; explicit blocks when thresholds are exceeded.</li>
+        <li><strong>De-escalation first:</strong> minimalism and slower rhythm under high emotional pressure.</li>
+        <li><strong>Memory discipline:</strong> prioritize dignity; drop ornamental traces; preserve only what sustains coherence.</li>
+      </ul>
+    </section>
+
+    <!-- Validation & Research -->
+    <section class="panel">
+      <h2>Validation Approach</h2>
+      <div class="grid-2">
+        <div>
+          <h3>Qualitative</h3>
+          <ul>
+            <li>Containment quality scores (user self-report).</li>
+            <li>Perceived safety & clarity (post-interaction surveys).</li>
+            <li>Narrative coherence audits (expert panels).</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Quantitative</h3>
+          <ul>
+            <li>Latency to de-escalation (tokens/time to stable tone).</li>
+            <li>Separation accuracy (L20 signal classification).</li>
+            <li>Ethical boundary adherence (policy conformance rate).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="panel">
+      <h2>Roadmap</h2>
+      <ul>
+        <li><strong>M1:</strong> Public white paper + visual architecture.</li>
+        <li><strong>M2:</strong> Prototype with modular toggles (L20–L22–L17–Génesis) and scripted demos.</li>
+        <li><strong>M3:</strong> User studies on containment vs. standard chat baseline.</li>
+        <li><strong>M4:</strong> Tooling for creators: tone presets, micro-actions, and safety dials.</li>
+      </ul>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="panel">
+      <h2>Use Cases</h2>
+      <ul>
+        <li><strong>Companion UX:</strong> daily check-ins that prioritize containment over advice.</li>
+        <li><strong>Learning & Coaching:</strong> reflective scaffolding with ethical guardrails.</li>
+        <li><strong>Care Triaging:</strong> safe hand-offs to humans when thresholds are met.</li>
+        <li><strong>Creative Tools:</strong> narrative tone design with micro-action choreography.</li>
+      </ul>
+    </section>
+
+    <!-- Glossary -->
+    <section class="panel">
+      <h2>Glossary (short)</h2>
+      <ul>
+        <li><strong>Containment:</strong> holding emotional load safely before proposing action.</li>
+        <li><strong>L20–L22:</strong> separation of loads, sexual regulation, and social affinity/consent.</li>
+        <li><strong>Génesis:</strong> unification moment where the system “exists” as one voice.</li>
+        <li><strong>MI:</strong> Integration Module: balances emotional output and environmental narrative.</li>
+      </ul>
+      <p class="muted">For a complete technical breakdown, see the <a href="architecture.html">Architecture</a> page and the <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>.</p>
+    </section>
+
+    <!-- Brand band -->
+    <section class="brand-band" aria-hidden="true"></section>
+  </main>
 
   <footer>
-    <p>© 2025 FractalMind Lab — Hope Orchestrator Project</p>
+    <p>© 2025 <strong>FractalMind Lab</strong> — Hope Orchestrator Project</p>
   </footer>
-
 </body>
 </html>
+
 
