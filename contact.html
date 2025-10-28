@@ -14,17 +14,21 @@
       color:var(--text);
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-   <!-- NAVIGATION MENU -->
-<nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About the Project</a>
-  <a href="architecture.html">Architecture</a>
-  <a href="entities.html">Entities</a>
-  <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
-  <a href="bio.html">Bio</a>
-  <a href="contact.html">Contact</a>
-</nav>
 
+    /* ---------------- NAV ---------------- */
+    nav{
+      position:fixed; top:0; left:0; width:100%;
+      display:flex; justify-content:center; gap:22px;
+      background:rgba(0,0,0,.65); backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,183,49,.18); padding:12px 16px; z-index:999;
+    }
+    nav a{
+      color:var(--gold); text-decoration:none; font-weight:600; letter-spacing:.1px;
+      transition:color .25s ease, transform .15s ease;
+    }
+    nav a:hover{ color:#ffd77a; transform:translateY(-1px); }
+
+    /* ---------------- PAGE ---------------- */
     header{ padding:120px 20px 6px; text-align:center; }
     h1{ color:var(--gold); font-size:2.2rem; font-weight:800; margin:0 0 10px; }
     .meta{ color:var(--muted); }
@@ -51,7 +55,6 @@
     .success{ background:rgba(60,180,90,.12); border:1px solid rgba(60,180,90,.4); color:#bfe7c8; }
     .error{ background:rgba(255,0,0,.07); border:1px solid rgba(255,0,0,.35); color:#ffb7b7; }
 
-    /* anti-bot honeypot */
     .hp{ position:absolute; left:-9999px; top:-9999px; }
 
     .brand-band{
@@ -64,7 +67,10 @@
     footer{ text-align:center; color:var(--muted); padding:22px 0 28px; border-top:1px solid rgba(255,183,49,.14); background:linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.35)); }
     footer strong{ color:#e8e0cc; }
 
-    @media (max-width:860px){ main{ grid-template-columns:1fr; } .brand-band{ height:140px; background-size:900px auto; } }
+    @media (max-width:860px){
+      main{ grid-template-columns:1fr; }
+      .brand-band{ height:140px; background-size:900px auto; }
+    }
   </style>
 </head>
 <body>
@@ -73,18 +79,16 @@
     <a href="about.html">About the Project</a>
     <a href="architecture.html">Architecture</a>
     <a href="entities.html">Entities</a>
+    <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
     <a href="bio.html">Bio</a>
     <a href="contact.html">Contact</a>
-    <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
   </nav>
 
   <header>
     <h1>Contact</h1>
-    <div class="meta">Write to: <a href="mailto:cesar@fractalmindlab.org">cesar@fractalmindlab.org</a> · <a href="mailto:project.hopev2@gmail.com">project.hopev2@gmail.com</a></div>
   </header>
 
   <main>
-    <!-- FORM -->
     <section class="panel card">
       <form id="contactForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST">
         <div class="row">
@@ -101,10 +105,7 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" minlength="10" required placeholder="How can I help?"></textarea>
 
-        <!-- Honeypot -->
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off"/>
-
-        <!-- Optional redirect after success -->
         <input type="hidden" name="_subject" value="New message from fractalmindlab.org"/>
         <input type="hidden" name="_template" value="table"/>
 
@@ -112,17 +113,8 @@
         <div class="success" id="ok">Thanks — your message was sent.</div>
         <div class="error" id="ko">There was a problem. Please try again.</div>
       </form>
-      <div class="hint">We’ll never share your email. The form is protected with basic spam controls (honeypot). For heavy traffic, add reCAPTCHA later.</div>
+      <div class="hint">We’ll never share your email. Protected against basic spam.</div>
     </section>
-
-    <!-- CONTACT INFO -->
-    <aside class="panel card">
-      <h3 style="margin:0 0 10px;color:var(--gold)">Direct email</h3>
-      <p><a href="mailto:cesar@fractalmindlab.org">cesar@fractalmindlab.org</a><br/>
-         <a href="mailto:project.hopev2@gmail.com">project.hopev2@gmail.com</a></p>
-      <h3 style="margin:16px 0 10px;color:var(--gold)">Response window</h3>
-      <p class="hint">Usually within 24–48 hours.</p>
-    </aside>
 
     <section class="brand-band" aria-hidden="true"></section>
   </main>
@@ -132,9 +124,9 @@
   </footer>
 
   <script>
-    // AJAX submit to keep UX suave
     const form = document.getElementById('contactForm');
     const ok = document.getElementById('ok'); const ko = document.getElementById('ko');
+    
     form.addEventListener('submit', async (e)=>{
       e.preventDefault(); ok.style.display='none'; ko.style.display='none';
       const fd = new FormData(form);
