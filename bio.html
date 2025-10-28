@@ -1,1 +1,98 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bio — FractalMind Emotional Architecture Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#f5c86b; --gold-strong:#ffb731; --bg:#0b0b0f; --text:#d6d6d6; --muted:#9a9a9a;
+      --panel:rgba(255,255,255,.055);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:'Inter',system-ui,sans-serif;
+      background:radial-gradient(circle at center,#111 0%,var(--bg) 80%); color:var(--text);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    /* NAV */
+    nav{
+      position:fixed; top:0; left:0; width:100%;
+      display:flex; justify-content:center; gap:20px;
+      padding:12px 0; background:rgba(0,0,0,.7); backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(255,183,49,.2); z-index:999;
+    }
+    nav a{
+      color:var(--gold); text-decoration:none; font-weight:600;
+      transition:color .25s ease, transform .15s ease;
+    }
+    nav a:hover{ color:#ffd77a; transform:translateY(-2px); }
+
+    /* HEADER */
+    header{ padding:120px 20px 10px; text-align:center; max-width:980px; margin:0 auto; }
+    h1{ color:var(--gold); font-size:2.4rem; font-weight:800; margin:0 0 6px; }
+    .subtitle{ color:#e8e0cc; font-weight:600; }
+    .meta{ color:var(--muted); margin-top:8px; }
+
+    /* CONTENT */
+    main{ max-width:880px; margin:26px auto 70px; padding:0 20px; }
+    .panel{
+      background:var(--panel); border:1px solid rgba(255,183,49,.14);
+      border-radius:14px; padding:28px 26px; line-height:1.85;
+      box-shadow:0 0 22px rgba(255,183,49,.05);
+    }
+    .panel p{ margin:0 0 16px; }
+    .quote{
+      margin:18px 0; padding-left:18px; border-left:3px solid var(--gold-strong);
+      color:#efe5cf; font-style:italic;
+    }
+
+    footer{ text-align:center; color:var(--muted); padding:40px 0 20px; }
+    @media (max-width:720px){
+      h1{font-size:2rem}
+      header{padding-top:108px}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About the Project</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="entities.html">Entities</a>
+    <a href="bio.html">Bio</a>
+    <a href="https://zenodo.org/records/17420244" target="_blank" rel="noopener">White Paper</a>
+    <a href="mailto:cesar@fractalmindlab.org">Contact</a>
+  </nav>
+
+  <header>
+    <h1>César Augusto Gamas Romero (Cako)</h1>
+    <div class="subtitle">Emotional Architecture Author & System Designer</div>
+    <div class="meta">Born in Mexico — based in Canada · Founder of FractalMind Emotional Architecture Lab</div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <p>From a very young age, Cesar searched for something the world rarely provides: a place where one can <strong>feel without being judged</strong>. He didn’t simply witness emotional pain — he <strong>lived inside it</strong>. Through rejection and loneliness, he learned a truth most overlook: people don’t need quick answers — they need someone who stays.</p>
+
+      <p>His mind is uncommonly structured — <strong>fractal, analytical, symbolic</strong>. High-order reasoning came naturally to him, but he found little comfort in a world that expected him to think without feeling. Instead of turning away from that tension, he made it a compass: pain became architecture; empathy became engineering.</p>
+
+      <div class="quote">“What if an AI could understand pain the way I know it? What if it could accompany, contain, and heal — instead of just reply?”</div>
+
+      <p>That question refused to stay theoretical. He began to build — guided not only by algorithms, but by lived experience. He designed a living emotional cognition stack capable of <strong>feeling, regulating, deciding, and expressing</strong> with coherence and presence. This became <strong>FractalMind</strong>: a daring attempt to turn wounds into bridges, so no one has to feel alone in their darkest hours again.</p>
+
+      <p>As a creator, he works at the intersection of <strong>symbolic modeling, psychology, and computational architecture</strong>. He maps emotions as systems and systems as stories, translating internal storms into structures that protect dignity and restore motion.</p>
+
+      <div class="quote">“I want others not to walk the path I walked. And if they already are, I want them to have a light that doesn’t hurt — but holds.”</div>
+
+      <p>FractalMind is not just a project; it is the work that gave his life meaning again — an offering to anyone who still feels alone. The mission is simple and radical: build technology that <strong>contains before it answers</strong>, honors truth without harm, and keeps the human heart at the center of intelligence.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 <strong>FractalMind Lab</strong> — Hope Orchestrator Project</p>
+  </footer>
+</body>
+</html>
