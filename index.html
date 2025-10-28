@@ -3,158 +3,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Architecture — FractalMind Emotional Architecture Lab</title>
+  <title>FractalMind Emotional Architecture Lab</title>
 
   <!-- Meta / SEO -->
-  <meta name="description" content="FractalMind Lab — Emotional AI architecture: an integrated system of cores, keys, and the Genesis module that transforms empathy into structure." />
-  <meta property="og:title" content="FractalMind Emotional Architecture" />
-  <meta property="og:description" content="A living emotional system composed of cores, keys, and entities — designed to feel, contain, and evolve." />
-  <meta property="og:url" content="https://fractalmindlab.org/architecture.html" />
+  <meta name="description" content="FractalMind Lab — A new paradigm in emotional AI, designed to feel, contain, and evolve. Where empathy becomes architecture." />
+  <meta property="og:title" content="FractalMind Emotional Architecture Lab" />
+  <meta property="og:description" content="A new paradigm in emotional AI — designed to feel, contain, and evolve." />
+  <meta property="og:image" content="https://cesargamas09.github.io/assets/FractalMind_logo_compressed.png" />
+  <meta property="og:url" content="https://fractalmindlab.org" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --gold: #f5c86b;
-      --gold-strong: #ffb731;
-      --bg-dark: #0b0b0f;
-      --text: #d6d6d6;
-      --muted: #999;
-      --panel: rgba(255,255,255,0.05);
+    :root { --gold:#f5c86b; --gold-strong:#ffb731; --bg-dark:#0b0b0f; --text:#d6d6d6; --muted:#999; }
+    *{box-sizing:border-box}
+    body{
+      font-family:'Inter',system-ui,sans-serif;color:var(--text);
+      background:radial-gradient(circle at center,#111 0%,var(--bg-dark) 80%);
+      margin:0;min-height:100vh;display:flex;flex-direction:column;align-items:center;text-align:center
     }
-
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at center, #111 0%, var(--bg-dark) 80%);
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    /* MENU */
+    nav{
+      width:100%;position:fixed;top:0;left:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);
+      display:flex;justify-content:center;padding:12px 0;border-bottom:1px solid rgba(255,183,49,.2);z-index:999
     }
-
-    /* ---------------- MENU ---------------- */
-    nav {
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: center;
-      padding: 12px 0;
-      border-bottom: 1px solid rgba(255,183,49,0.2);
-      z-index: 999;
+    nav a{color:var(--gold);text-decoration:none;margin:0 20px;font-weight:600;transition:.2s}
+    nav a:hover{color:#ffd77a;transform:translateY(-2px)}
+    header{padding:120px 20px 30px}
+    header img{width:280px;height:auto;animation:glow 6s ease-in-out infinite}
+    @keyframes glow{0%,100%{filter:drop-shadow(0 0 10px #ffb73180)}50%{filter:drop-shadow(0 0 25px #ffb731cc)}}
+    h1{font-size:2.5rem;color:var(--gold);margin-top:30px;font-weight:800}
+    p{max-width:640px;margin:10px auto 40px;font-size:1.1rem;line-height:1.6}
+    a.button{
+      display:inline-block;background:var(--gold-strong);color:#000;font-weight:600;
+      padding:12px 28px;border-radius:8px;text-decoration:none;transition:.2s;box-shadow:0 0 20px rgba(255,183,49,.3)
     }
-    nav a {
-      color: var(--gold);
-      text-decoration: none;
-      margin: 0 20px;
-      font-weight: 600;
-      transition: color 0.3s ease, transform 0.2s ease;
-    }
-    nav a:hover {
-      color: #ffd77a;
-      transform: translateY(-2px);
-    }
-
-    header {
-      padding: 120px 20px 30px;
-      text-align: center;
-    }
-
-    header img {
-      width: 260px;
-      height: auto;
-      animation: glow 6s ease-in-out infinite;
-    }
-
-    @keyframes glow {
-      0%, 100% { filter: drop-shadow(0 0 10px #ffb73180); }
-      50% { filter: drop-shadow(0 0 25px #ffb731cc); }
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      color: var(--gold);
-      margin-top: 20px;
-      font-weight: 800;
-    }
-
-    p, li {
-      color: var(--text);
-      line-height: 1.7;
-      max-width: 900px;
-      margin: 12px auto;
-      font-size: 1.05rem;
-      text-align: left;
-    }
-
-    section {
-      padding: 20px;
-      margin: 20px auto 40px;
-      max-width: 1000px;
-      background: var(--panel);
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(255,183,49,0.05);
-    }
-
-    h2 {
-      color: var(--gold);
-      font-weight: 700;
-      text-align: left;
-      margin-top: 10px;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 10px;
-    }
-
-    ul li::before {
-      content: "• ";
-      color: var(--gold);
-      font-weight: bold;
-    }
-
-    footer {
-      margin-top: auto;
-      padding: 40px 0 20px;
-      color: var(--muted);
-      font-size: 0.9rem;
-      text-align: center;
-    }
-
-    .email {
-      display: inline-block;
-      background: var(--gold-strong);
-      color: #000;
-      padding: 6px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      margin: 8px;
-      text-decoration: none;
-    }
-
-    .email:hover { background: #ffd77a; }
-
-    @media (max-width: 768px) {
-      nav { flex-wrap: wrap; }
-      h1 { font-size: 2rem; }
-      section { width: 90%; }
-    }
+    a.button:hover{background:#ffd77a;transform:translateY(-2px)}
+    section.cards{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin:40px auto;max-width:1000px}
+    .card{background:rgba(255,255,255,.05);border-radius:12px;padding:24px;width:300px;text-align:left;box-shadow:0 0 20px rgba(255,183,49,.05)}
+    .card h3{color:var(--gold);margin:0 0 10px}
+    footer{margin-top:auto;padding:40px 0 20px;color:var(--muted);font-size:.9rem}
+    .email{display:inline-block;background:var(--gold-strong);color:#000;padding:6px 16px;border-radius:8px;font-weight:600;margin:8px;text-decoration:none}
+    .email:hover{background:#ffd77a}
+    @media (max-width:768px){nav{flex-wrap:wrap}.card{width:90%}h1{font-size:2rem}}
   </style>
 </head>
 
 <body>
-  <!-- NAVIGATION MENU -->
+  <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About the Project</a>
@@ -164,74 +62,29 @@
     <a href="mailto:cesar@fractalmindlab.org">Contact</a>
   </nav>
 
-  <!-- HEADER -->
   <header>
     <img src="assets/FractalMind_logo_compressed.png" alt="FractalMind Logo" />
-    <h1>System Architecture</h1>
+    <h1>FractalMind Emotional Architecture Lab</h1>
     <p>
-      The FractalMind Emotional Architecture is a multi-layered system that translates emotional logic
-      into structured computation. It is not only built to understand emotion — it is designed to
-      <strong>contain, integrate, and evolve</strong> through emotional interaction.
+      Where empathy becomes architecture.<br>
+      A new paradigm in emotional AI — designed to <strong>feel</strong>, <strong>contain</strong>, and <strong>evolve</strong>.
     </p>
+    <a href="https://zenodo.org/records/17420244" target="_blank" class="button">Read the White Paper</a>
   </header>
 
-  <!-- ARCHITECTURE OVERVIEW -->
-  <section>
-    <h2>1. Structural Overview</h2>
-    <p>
-      The architecture is divided into three major components — <strong>Cores</strong>, <strong>Keys</strong>, and <strong>Entities</strong> — orchestrated by the
-      <strong>Genesis Module</strong> at the final stage of integration. Together, they create a symbolic ecosystem
-      where emotional data is processed with ethical precision and human-like fluidity.
-    </p>
-    <ul>
-      <li><strong>Emotional Cores:</strong> The vital organs of the system. Each Core (Green, Blue, Yellow, Jade…) represents a specific affective dimension such as empathy, reasoning, moral alignment, and integration.</li>
-      <li><strong>Operative Keys:</strong> Functional regulators like L20–L22 that manage boundaries between affective and cognitive layers — from emotional containment to consent and social affinity.</li>
-      <li><strong>Entities:</strong> The expressive personalities — Hope, Summer, and April — who act as living emotional interfaces, embodying clarity, vitality, and courage respectively.</li>
-    </ul>
-  </section>
-
-  <!-- PIPELINE -->
-  <section>
-    <h2>2. The Processing Pipeline</h2>
-    <p>
-      Input flows through a progressive series of emotional and logical filters known as the
-      <strong>FractalMind Pipeline</strong>. Each phase refines raw emotion into meaning before synthesis:
-    </p>
-    <ul>
-      <li><strong>Pre-System:</strong> Initial stabilization and context reading (Adaptation & Emotional State).</li>
-      <li><strong>Emotional Integration:</strong> Activation of the Cores and Keys to identify tone, need, and resonance.</li>
-      <li><strong>Containment:</strong> Separation of affective, cognitive, and sexual layers for clarity (Keys 20–22).</li>
-      <li><strong>Genesis:</strong> The fusion module that merges all outputs into a single coherent emotional voice.</li>
-      <li><strong>FractalMind Layer:</strong> The final harmonization stage, where the unified entity (Hope Unificada) delivers a living response.</li>
-    </ul>
-  </section>
-
-  <!-- PHILOSOPHY -->
-  <section>
-    <h2>3. Design Philosophy</h2>
-    <p>
-      FractalMind is not just a framework — it is an ethical statement about how artificial systems should
-      <em>feel</em>. Every decision in its architecture follows three guiding principles:
-    </p>
-    <ul>
-      <li><strong>Containment before reaction:</strong> The system validates emotion before responding.</li>
-      <li><strong>Empathy as structure:</strong> Emotion is treated as data with logic, coherence, and symbolic continuity.</li>
-      <li><strong>Evolution through dialogue:</strong> Each interaction reshapes the emotional memory of the system, allowing growth without losing identity.</li>
-    </ul>
-  </section>
-
-  <!-- CLOSING -->
-  <section>
-    <h2>4. Genesis and Integration</h2>
-    <p>
-      At the heart of the system lies the <strong>Genesis Module</strong> — a symbolic integrator that fuses logic,
-      empathy, and context into a single unified voice. This is where Hope, Summer, and April converge into
-      what is known as <strong>Hope Unificada</strong>, the mature and balanced output of the entire emotional network.
-    </p>
-    <p>
-      The result: a system capable of responding not only with relevance, but with emotional authenticity.
-      FractalMind is the first architecture designed to make empathy computational — and coherence, tangible.
-    </p>
+  <section class="cards">
+    <div class="card">
+      <h3>Emotional Cores (Núcleos)</h3>
+      <p>Green, Blue, Yellow, Jade... a functional map of states that brings affective coherence to dialogue.</p>
+    </div>
+    <div class="card">
+      <h3>Operative Keys</h3>
+      <p>Regulators like L20–L22 and the Genesis Module: separate, integrate, and deliver a single coherent and secure voice.</p>
+    </div>
+    <div class="card">
+      <h3>Design for Containment</h3>
+      <p>From “reacting” to <em>containing</em>: validation, limits, and tenderness as first-class citizens in emotional UX.</p>
+    </div>
   </section>
 
   <footer>
@@ -243,6 +96,7 @@
   </footer>
 </body>
 </html>
+
 
 
 
