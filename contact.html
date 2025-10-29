@@ -14,7 +14,6 @@
       color:var(--text);
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    /* NAV */
     nav{
       position:fixed; top:0; left:0; width:100%;
       display:flex; justify-content:center; gap:22px;
@@ -26,22 +25,11 @@
       transition:color .25s ease, transform .15s ease;
     }
     nav a:hover{ color:#ffd77a; transform:translateY(-1px); }
-
     header{ padding:120px 20px 6px; text-align:center; }
     h1{ color:var(--gold); font-size:2.2rem; font-weight:800; margin:0 0 10px; }
-
-    main{
-      max-width:1000px; margin:28px auto 80px; padding:0 20px;
-      display:grid; gap:20px;
-    }
-    .panel{
-      background:var(--panel);
-      border:1px solid rgba(255,183,49,.14);
-      border-radius:14px;
-      box-shadow:0 0 22px rgba(255,183,49,.05);
-    }
+    main{ max-width:1000px; margin:28px auto 80px; padding:0 20px; display:grid; gap:20px; }
+    .panel{ background:var(--panel); border:1px solid rgba(255,183,49,.14); border-radius:14px; box-shadow:0 0 22px rgba(255,183,49,.05); }
     .card{ padding:24px; width:100%; max-width:620px; margin:0 auto; }
-
     label{ display:block; font-weight:600; margin:14px 0 6px; color:#e8e0cc; }
     input, textarea{
       width:100%; padding:12px 14px; border-radius:10px; border:1px solid rgba(255,183,49,.18);
@@ -55,29 +43,19 @@
       box-shadow:0 10px 30px rgba(255,183,49,.22); transition:transform .15s ease, background .25s ease, box-shadow .25s ease;
     }
     .btn:hover{ background:#ffd77a; transform:translateY(-2px); box-shadow:0 14px 36px rgba(255,183,49,.28); }
-
-    .success, .error{ display:none; margin-top:12px; padding:10px 12px; border-radius:10px; }
-    .success{ background:rgba(60,180,90,.12); border:1px solid rgba(60,180,90,.4); color:#bfe7c8; }
-    .error{ background:rgba(255,0,0,.07); border:1px solid rgba(255,0,0,.35); color:#ffb7b7; }
-
+    .success, .error{ margin-top:12px; padding:10px 12px; border-radius:10px; }
+    .success{ display:none; background:rgba(60,180,90,.12); border:1px solid rgba(60,180,90,.4); color:#bfe7c8; }
+    .error{ display:none; background:rgba(255,0,0,.07); border:1px solid rgba(255,0,0,.35); color:#ffb7b7; }
     .hint{ margin-top:10px; font-size:.9rem; color:#a9a9a9; }
     .hp{ position:absolute; left:-9999px; top:-9999px; }
-
     .brand-band{
-      height:160px;
-      background: url('assets/index.png') center/1100px auto no-repeat;
-      filter: drop-shadow(0 12px 36px rgba(255,183,49,.22));
-      opacity:.95; border-radius:12px;
+      height:160px; background:url('assets/index.png') center/1100px auto no-repeat;
+      filter:drop-shadow(0 12px 36px rgba(255,183,49,.22)); opacity:.95; border-radius:12px;
       max-width:860px; margin:0 auto;
     }
-
     footer{ text-align:center; color:var(--muted); padding:22px 0 28px; border-top:1px solid rgba(255,183,49,.14); background:linear-gradient(to bottom, rgba(0,0,0,.15), rgba(0,0,0,.35)); }
     footer strong{ color:#e8e0cc; }
-
-    @media (max-width:640px){
-      .row{ grid-template-columns:1fr; }
-      .card{ max-width:100%; }
-    }
+    @media (max-width:640px){ .row{ grid-template-columns:1fr; } .card{ max-width:100%; } }
   </style>
 </head>
 <body>
@@ -95,8 +73,8 @@
 
   <main>
     <section class="panel card">
-      <!-- Usa el endpoint AJAX de FormSubmit -->
-      <form id="contactForm" action="https://formsubmit.co/ajax/cesar@fractalmindlab.org" method="POST">
+      <!-- FormSubmit clásico (sin JS). Redirige a esta misma página con ?sent=1 -->
+      <form action="https://formsubmit.co/cesar@fractalmindlab.org" method="POST">
         <div class="row">
           <div>
             <label for="name">Name</label>
@@ -111,21 +89,21 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" minlength="10" required placeholder="How can I help?"></textarea>
 
-        <!-- Honeypot y opciones -->
+        <!-- opciones FormSubmit -->
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off"/>
         <input type="hidden" name="_subject" value="New message from fractalmindlab.org">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
-        <!-- Copia opcional para tu Gmail -->
+        <input type="hidden" name="_next" value="contact.html?sent=1">
+        <!-- copia opcional a tu Gmail: descomenta si quieres -->
         <!-- <input type="hidden" name="_cc" value="proyect.hopev2@gmail.com"> -->
-        <!-- Si NO usas AJAX puedes redirigir a una página de gracias -->
-        <!-- <input type="hidden" name="_next" value="https://fractalmindlab.org/thanks.html"> -->
 
         <button class="btn" type="submit">Send</button>
-        <div class="success" id="ok">Thanks — your message was sent.</div>
-        <div class="error" id="ko">There was a problem. Please try again.</div>
-        <div class="hint">We’ll never share your email. Protected against basic spam.</div>
       </form>
+
+      <div class="success" id="ok">Thanks — your message was sent.</div>
+      <div class="error" id="ko">There was a problem. Please try again.</div>
+      <div class="hint">We’ll never share your email. Protected against basic spam.</div>
     </section>
 
     <section class="brand-band" aria-hidden="true"></section>
@@ -136,38 +114,11 @@
   </footer>
 
   <script>
-    // Envío con fetch para no recargar la página
-    const form = document.getElementById('contactForm');
-    const ok = document.getElementById('ok');
-    const ko = document.getElementById('ko');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      ok.style.display = 'none';
-      ko.style.display = 'none';
-
-      try {
-        const res = await fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        });
-
-        if (res.ok) {
-          ok.style.display = 'block';
-          form.reset();
-        } else {
-          // Si no está verificado el correo en FormSubmit suele devolver 422
-          if (res.status === 422) {
-            ko.textContent = 'Please verify your email with FormSubmit (check cesar@fractalmindlab.org).';
-          }
-          ko.style.display = 'block';
-        }
-      } catch (err) {
-        ko.style.display = 'block';
-      }
-    });
+    // Mostrar aviso si venimos de _next ?sent=1
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') {
+      document.getElementById('ok').style.display = 'block';
+    }
   </script>
 </body>
 </html>
-
