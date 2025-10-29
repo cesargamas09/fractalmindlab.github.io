@@ -27,7 +27,6 @@
     }
     nav a:hover{ color:#ffd77a; transform:translateY(-1px); }
 
-    /* PAGE */
     header{ padding:120px 20px 6px; text-align:center; }
     h1{ color:var(--gold); font-size:2.2rem; font-weight:800; margin:0 0 10px; }
 
@@ -41,10 +40,7 @@
       border-radius:14px;
       box-shadow:0 0 22px rgba(255,183,49,.05);
     }
-    /* Caja centrada */
-    .card{
-      padding:24px; width:100%; max-width:620px; margin:0 auto;
-    }
+    .card{ padding:24px; width:100%; max-width:620px; margin:0 auto; }
 
     label{ display:block; font-weight:600; margin:14px 0 6px; color:#e8e0cc; }
     input, textarea{
@@ -64,7 +60,7 @@
     .success{ background:rgba(60,180,90,.12); border:1px solid rgba(60,180,90,.4); color:#bfe7c8; }
     .error{ background:rgba(255,0,0,.07); border:1px solid rgba(255,0,0,.35); color:#ffb7b7; }
 
-    /* honeypot */
+    .hint{ margin-top:10px; font-size:.9rem; color:#a9a9a9; }
     .hp{ position:absolute; left:-9999px; top:-9999px; }
 
     .brand-band{
@@ -99,8 +95,8 @@
 
   <main>
     <section class="panel card">
-      <!-- Envía directo a cesar@fractalmindlab.org con FormSubmit -->
-      <form id="contactForm" action="https://formsubmit.co/cesar@fractalmindlab.org" method="POST">
+      <!-- Usa el endpoint AJAX de FormSubmit -->
+      <form id="contactForm" action="https://formsubmit.co/ajax/cesar@fractalmindlab.org" method="POST">
         <div class="row">
           <div>
             <label for="name">Name</label>
@@ -119,14 +115,17 @@
         <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off"/>
         <input type="hidden" name="_subject" value="New message from fractalmindlab.org">
         <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false"> <!-- desactiva el captcha de FormSubmit -->
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Copia opcional para tu Gmail -->
+        <!-- <input type="hidden" name="_cc" value="proyect.hopev2@gmail.com"> -->
+        <!-- Si NO usas AJAX puedes redirigir a una página de gracias -->
         <!-- <input type="hidden" name="_next" value="https://fractalmindlab.org/thanks.html"> -->
 
         <button class="btn" type="submit">Send</button>
         <div class="success" id="ok">Thanks — your message was sent.</div>
         <div class="error" id="ko">There was a problem. Please try again.</div>
+        <div class="hint">We’ll never share your email. Protected against basic spam.</div>
       </form>
-      <div class="hint">We’ll never share your email. Protected against basic spam.</div>
     </section>
 
     <section class="brand-band" aria-hidden="true"></section>
@@ -139,17 +138,36 @@
   <script>
     // Envío con fetch para no recargar la página
     const form = document.getElementById('contactForm');
-    const ok = document.getElementById('ok'); const ko = document.getElementById('ko');
+    const ok = document.getElementById('ok');
+    const ko = document.getElementById('ko');
 
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault(); ok.style.display='none'; ko.style.display='none';
-      const fd = new FormData(form);
-      try{
-        const res = await fetch(form.action, { method:'POST', body: fd, headers: { 'Accept':'application/json' }});
-        if(res.ok){ ok.style.display='block'; form.reset(); }
-        else{ ko.style.display='block'; }
-      }catch(_){ ko.style.display='block'; }
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      ok.style.display = 'none';
+      ko.style.display = 'none';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          ok.style.display = 'block';
+          form.reset();
+        } else {
+          // Si no está verificado el correo en FormSubmit suele devolver 422
+          if (res.status === 422) {
+            ko.textContent = 'Please verify your email with FormSubmit (check cesar@fractalmindlab.org).';
+          }
+          ko.style.display = 'block';
+        }
+      } catch (err) {
+        ko.style.display = 'block';
+      }
     });
   </script>
 </body>
 </html>
+
